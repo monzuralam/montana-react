@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -12,9 +13,9 @@ const Header = () => {
         <div className="container mx-auto">
           <nav className="mx-auto flex items-center justify-between p-6 lg:p-8">
             <div className="flex lg:flex-1">
-              <a href="/">
+              <Link to="/">
                 <span className="text-2xl font-bold">MonTana</span>
-              </a>
+              </Link>
             </div>
             <div className={`flex lg:hidden ${toggleMenu}`}>
               <button
@@ -41,47 +42,47 @@ const Header = () => {
               </button>
             </div>
             <div className="hidden lg:flex lg:gap-x-12">
-              <a
-                href=""
+              <Link
+                to="/"
                 className="text-sm font-semibold leading-6 text-gray-900"
               >
                 Home
-              </a>
-              <a
-                href=""
+              </Link>
+              <Link
+                to="/services/"
                 className="text-sm font-semibold leading-6 text-gray-900"
               >
                 Services
-              </a>
-              <a
-                href=""
+              </Link>
+              <Link
+                to="/blog/"
                 className="text-sm font-semibold leading-6 text-gray-900"
               >
                 Blog
-              </a>
-              <a
-                href=""
+              </Link>
+              <Link
+                to="/contact/"
                 className="text-sm font-semibold leading-6 text-gray-900"
               >
                 Contact
-              </a>
+              </Link>
             </div>
             <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-              <a
-                href=""
+              <Link
+                to="/login/"
                 className="text-sm font-semibold leading-6 text-gray-900"
               >
                 Log in
-              </a>
+              </Link>
             </div>
             {/* mobile menu show, hide based on state */}
             <div className={`lg:hidden ${displayMobileMenu}`}>
               <div className="fixed inset-0 z-10"></div>
               <div className="bg-white fixed inset-y-0 z-10 right-0 w-full overflow-y-auto px-6 py-6 md:max-w-full sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
                 <div className="flex items-center justify-between">
-                  <a href="/">
+                  <Link to="/">
                     <span className="text-2xl font-bold">MonTana</span>
-                  </a>
+                  </Link>
                   <button
                     type="button"
                     className={`1-m-2.5 rounded-md p-2.5 text-gray-700`}
@@ -107,32 +108,38 @@ const Header = () => {
                 <div className="mt-6 flow-root">
                   <div className="-my-6 divide-y divide-gray-500/10">
                     <div className="space-y-2 py-6">
-                      <a
-                        href="#"
+                      <Link
+                        to="/"
                         className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                       >
                         Home
-                      </a>
-                      <a
-                        href="#"
+                      </Link>
+                      <Link
+                        to="/services/"
                         className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                       >
                         Services
-                      </a>
-                      <a
-                        href="#"
+                      </Link>
+                      <Link
+                        to="/blog/"
                         className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                       >
                         Blog
-                      </a>
+                      </Link>
+                      <Link
+                        to="/contact/"
+                        className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                      >
+                        Contact
+                      </Link>
                     </div>
                     <div className="py-6">
-                      <a
-                        href="#"
+                      <Link
+                        to="/login/"
                         className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                       >
                         Log in
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
