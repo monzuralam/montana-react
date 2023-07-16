@@ -1,12 +1,16 @@
+import { Routes, Route } from "react-router-dom";
 import Header from "./components/header/header.component";
 import Footer from "./components/footer/footer.component";
+import Home from "./routes/home/home.component";
+import Error from "./routes/error/error.component";
 function App() {
   return (
     <>
       <Header />
-      <div className="container mx-auto p-6 lg:p-8">
-        <h1 className="text-3xl font-bold underline">Hello world!</h1>
-      </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="*" element={<Error />} />
+      </Routes>
       <Footer />
     </>
   );
