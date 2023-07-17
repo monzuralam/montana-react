@@ -1,6 +1,13 @@
 import { Link } from "react-router-dom";
 import googleIcon from "../../assets/images/g.png";
+import { signInWithGooglePopup } from "../../../utils/firebase/firebase.utils";
+
 const Signin = () => {
+  const logGoogleUser = async () => {
+    const response = await signInWithGooglePopup();
+    console.log(response);
+  };
+
   return (
     <div className="container mx-auto p-6 lg:p-8">
       <div className="flex min-h-full flex-col justify-center">
@@ -63,20 +70,21 @@ const Signin = () => {
                 Sign in
               </button>
             </div>
-
-            <div>
-              <p className="text-center text-sm text-gray-900">
-                Or continue with
-              </p>
-              <button
-                type="submit"
-                className="mt-6 flex w-full justify-center rounded-md bg-black px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-gray-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-              >
-                <img src={googleIcon} alt="Google" className="w-7 mr-2" />
-                Google
-              </button>
-            </div>
           </form>
+
+          <div className="mt-6">
+            <p className="text-center text-sm text-gray-900">
+              Or continue with
+            </p>
+            <button
+              onClick={logGoogleUser}
+              className="mt-6 flex w-full justify-center rounded-md bg-black px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-gray-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+            >
+              <img src={googleIcon} alt="Google" className="w-7 mr-2" />
+              Google
+            </button>
+          </div>
+
           <p className="mt-10 text-center text-sm text-gray-500">
             Not a member?
             <Link
