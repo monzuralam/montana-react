@@ -1,11 +1,28 @@
+import { useEffect } from "react";
+import { getRedirectResult } from "firebase/auth";
 import { Link } from "react-router-dom";
 import googleIcon from "../../assets/images/g.png";
-import { signInWithGooglePopup } from "../../../utils/firebase/firebase.utils";
+import {
+  auth,
+  signInWithGooglePopup,
+  signInWithGoogleRedirect,
+  createUserDocFromAuth,
+} from "../../../utils/firebase/firebase.utils";
 
 const Signin = () => {
+  useEffect(() => {
+    (async function fetchData() {
+      const response = await getRedirectResult(auth);
+      if (response) {
+        const userRef = createUserDocFromAuth(response.user);
+        console.log(userRef);
+      }
+    })();
+  }, []);
+
   const logGoogleUser = async () => {
-    const response = await signInWithGooglePopup();
-    console.log(response);
+    const { user } = await signInWithGooglePopup();
+    createUserDocFromAuth(user);
   };
 
   return (
@@ -76,13 +93,22 @@ const Signin = () => {
             <p className="text-center text-sm text-gray-900">
               Or continue with
             </p>
-            <button
-              onClick={logGoogleUser}
-              className="mt-6 flex w-full justify-center rounded-md bg-black px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-gray-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-            >
-              <img src={googleIcon} alt="Google" className="w-7 mr-2" />
-              Google
-            </button>
+            <div className="flex justify-between gap-4">
+              <button
+                onClick={logGoogleUser}
+                className="mt-6 flex w-full justify-center rounded-md bg-black px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-gray-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+              >
+                <img src={googleIcon} alt="Google" className="w-7 mr-2" />
+                Google
+              </button>
+              <button
+                onClick={signInWithGoogleRedirect}
+                className="mt-6 flex w-full justify-center rounded-md bg-black px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-gray-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+              >
+                <img src={googleIcon} alt="Google" className="w-7 mr-2" />
+                Google
+              </button>
+            </div>
           </div>
 
           <p className="mt-10 text-center text-sm text-gray-500">
