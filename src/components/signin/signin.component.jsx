@@ -114,10 +114,10 @@ const Signin = () => {
           <p className="mt-10 text-center text-sm text-gray-500">
             Not a member?
             <Link
-              to="#"
-              className="font-semibold leading-6 text-gray-600 hover:text-gray-500"
+              to="/signup"
+              className="font-semibold leading-6 text-gray-600 hover:text-gray-500 ml-1"
             >
-              Start a 14 day free trial
+              Sign Up
             </Link>
           </p>
         </div>
